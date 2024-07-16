@@ -1,0 +1,17 @@
+name: Scheduled Job
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'  # 每十分钟触发一次
+
+jobs:
+  run-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run python script
+        run: |
+          python 地震資訊抓取.py
