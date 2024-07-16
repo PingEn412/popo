@@ -1,3 +1,4 @@
 pygsheets
 selenium
 webdriver_manager
+pandas
