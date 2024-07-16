@@ -1,0 +1,5 @@
+pygsheets
+selenium
+time
+datetime
+webdriver_manager
