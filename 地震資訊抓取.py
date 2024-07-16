@@ -19,7 +19,7 @@ import os
 
 service_account_key = os.getenv('googleServiceAccountKey')
 # 使用 Google 服务账户密钥内容进行授权
-gc = pygsheets.authorize(service_file=service_account_key)
+gc = pygsheets.authorize(service_account_file=service_account_key)
 sht = gc.open_by_url('https://docs.google.com/spreadsheets/d/1607r51uPLPASt07lVIDP8-xTi6Z3D4LjEzVZwQoilW4/edit?gid=0#gid=0')
 wks = sht[0]
 
