@@ -1,0 +1,17 @@
+name: Scheduled Workflow
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天的午夜触发
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      # 添加您的其他作业步骤
+      - name: Run Python script
+        run: |
+          python 地震資訊抓取.py
