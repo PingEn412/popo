@@ -16,7 +16,7 @@ import time
 import pandas as pd
 import datetime
 
-gc = pygsheets.authorize(service_file = r'D:\Users\e55677\Downloads\pythonsheettest-429603-3646300cd6a7.json')
+gc = pygsheets.authorize(service_file = './pythonsheettest-429603-3646300cd6a7.json')
 sht = gc.open_by_url('https://docs.google.com/spreadsheets/d/1607r51uPLPASt07lVIDP8-xTi6Z3D4LjEzVZwQoilW4/edit?gid=0#gid=0')
 wks_list = sht.worksheets()
 wks = sht[0]
