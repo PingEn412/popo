@@ -36,4 +36,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest -s -v ./main/地震資訊抓取.py
+        pytest -s -v ./地震資訊抓取.py
