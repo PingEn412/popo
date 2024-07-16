@@ -17,8 +17,6 @@ import pandas as pd
 import datetime
 import os
 
-gc = pygsheets.authorize(service_file = './pythonsheettest-429603-3646300cd6a7.json')
-# 从环境变量中获取 Google 服务账户密钥内容
 service_account_key = os.getenv('googleServiceAccountKey')
 # 使用 Google 服务账户密钥内容进行授权
 gc = pygsheets.authorize(service_account_file_content=service_account_key)
