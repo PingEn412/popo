@@ -5,13 +5,18 @@ on:
     - cron: '*/20 * * * *'  # 每十分钟触发一次
 
 jobs:
-  run-job:
+  run_python_script:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Run python script
+      - name: Set up Python Environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+      - name: Install Dependencies
         run: |
-          python 地震資訊抓取.py
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Set up Python
+        run: python main/地震資訊抓取.py
