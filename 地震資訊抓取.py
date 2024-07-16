@@ -105,8 +105,3 @@ def job():
 
 if __name__ == '__main__':
     job()
-    '''
-    while True:
-        job()
-        time.sleep(1800)
-        #每30分鐘抓取一次'''
