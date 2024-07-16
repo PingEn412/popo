@@ -2,7 +2,7 @@
 """
 Created on Tue Jul 16 11:09:08 2024
 
-@author: e55677
+@author: PingEn
 """
 
 import pygsheets
