@@ -19,3 +19,5 @@ jobs:
           pip install -r requirements.txt
       - name: Set up Python
         run: python 地震資訊抓取.py
+        env:
+          googleServiceAccountKey: ${{ secrets.googleServiceAccountKey}}
