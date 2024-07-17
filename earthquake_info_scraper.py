@@ -102,6 +102,7 @@ def job():
 
     # 將數據寫入 Google 表格
     write_to_google_sheet(data)
+    driver.quit()
 
 
 if __name__ == '__main__':
