@@ -27,7 +27,7 @@ def authorize_google_sheets():
     # Load Google service account credentials from service_account.json
     with open('service_account.json') as f:
         credentials = json.load(f)
-    gc = pygsheets.authorize(service_account_file='service_account.json')
+    gc = pygsheets.authorize(service_account_file=credentials)
     return gc
 
 def fetch_latest_earthquake_link():
