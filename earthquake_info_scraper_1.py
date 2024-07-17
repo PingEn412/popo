@@ -21,7 +21,7 @@ options = Options()
 options.add_argument("--headless")  # 无头模式运行，适合无界面环境如CI/CD
 options.add_argument("--disable-dev-shm-usage")  # 禁用/dev/shm使用，适用于虚拟化环境
 options.add_argument("--no-sandbox")  # 禁用沙盒模式，适用于虚拟化环境
-driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+driver = webdriver.Chrome(options=options)
 
 def authorize_google_sheets():
     # Load Google service account credentials from service_account.json
