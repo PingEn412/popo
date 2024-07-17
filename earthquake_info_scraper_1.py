@@ -31,7 +31,7 @@ def authorize_google_sheets():
     return gc
 
 def fetch_latest_earthquake_link():
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(options=options)
     try:
         url = 'https://www.cwa.gov.tw/V8/C/E/index.html'
         driver.get(url)
@@ -53,7 +53,7 @@ def fetch_latest_earthquake_link():
         driver.quit()
 
 def fetch_max_intensity(url):
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(options=options)
     try:
         driver.get(url)
         
