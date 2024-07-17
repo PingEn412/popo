@@ -15,22 +15,19 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 import pandas as pd
 import datetime
-
-gc = pygsheets.authorize(service_file = 'D:\\Users\\e55677\\Downloads\\pythonsheettest-429603-cc0353cec80d.json')
-sht = gc.open_by_url('https://docs.google.com/spreadsheets/d/1607r51uPLPASt07lVIDP8-xTi6Z3D4LjEzVZwQoilW4/edit?gid=0#gid=0')
-wks_list = sht.worksheets()
-wks = sht[0]
-
-# 初始化Chrome浏览器
-#driver = webdriver.Chrome(executable_path='D:\\Users\\e55677\\Downloads\\chromedriver-win64\\chromedriver.exe')
-
-# 使用 WebDriver Manager 自動管理並下載適合您系統的 ChromeDriver
-#driver = webdriver.Chrome(ChromeDriverManager().install())
+import os, json
 
 driver = webdriver.Chrome()
 
-def fetch_latest_earthquake_link():
+def authorize_google_sheets():
+    # Load Google service account credentials from service_account.json
+    with open('service_account.json') as f:
+        credentials = json.load(f)
+    gc = pygsheets.authorize(service_account_file='service_account.json')
+    return gc
 
+def fetch_latest_earthquake_link():
+    driver = webdriver.Chrome()
     try:
         url = 'https://www.cwa.gov.tw/V8/C/E/index.html'
         driver.get(url)
@@ -52,6 +49,7 @@ def fetch_latest_earthquake_link():
         driver.quit()
 
 def fetch_max_intensity(url):
+    driver = webdriver.Chrome()
     try:
         driver.get(url)
         
@@ -74,6 +72,10 @@ def fetch_max_intensity(url):
         driver.quit()
 
 def write_to_google_sheet(data):
+    gc = authorize_google_sheets()
+    sht = gc.open_by_url('https://docs.google.com/spreadsheets/d/1607r51uPLPASt07lVIDP8-xTi6Z3D4LjEzVZwQoilW4/edit?gid=0#gid=0')
+    wks = sht[0]
+    
     # 清除工作表中現有的內容
     wks.clear()
     # 将 DataFrame 写入 Google 表格
@@ -89,7 +91,6 @@ def job():
     # 抓取地震資訊
     time_now = time_get()
     link = fetch_latest_earthquake_link()
-    driver = webdriver.Chrome()
     max_intensity = fetch_max_intensity(link)
     # 構造數據元組
     data = [['地震資訊：', max_intensity[0]],
@@ -102,8 +103,3 @@ def job():
 
 if __name__ == '__main__':
     job()
-    '''
-    while True:
-        job()
-        time.sleep(1800)
-        #每30分鐘抓取一次'''
