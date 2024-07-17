@@ -28,6 +28,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Setup Google Cloud service account key
+      run: |
+        echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > service_account.json
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
