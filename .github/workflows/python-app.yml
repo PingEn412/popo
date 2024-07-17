@@ -17,9 +17,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.10
@@ -32,6 +29,9 @@ jobs:
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Setup Google Cloud service account key
+      env:
+        GoogleServiceAccountKey: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
       run: |
          echo "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}" > service_account.json
     - name: Lint with flake8
